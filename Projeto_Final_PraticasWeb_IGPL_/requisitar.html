@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requisição de Veículos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Requisitar Veículo</h1>
+    </header>
+    <main>
+        <form action="/requisitar_veiculo" method="post">
+            <label for="veiculo">Veículo:</label>
+            <select id="veiculo" name="veiculo" required>
+                <option value="veiculo1">Veículo 1</option>
+                <option value="veiculo2">Veículo 2</option>
+                <!-- Adicione mais opções conforme necessário -->
+            </select><br>
+
+            <label for="data_inicio">Data de Início:</label>
+            <input type="date" id="data_inicio" name="data_inicio" required><br>
+
+            <label for="data_fim">Data de Fim:</label>
+            <input type="date" id="data_fim" name="data_fim" required><br>
+
+            <input type="submit" value="Requisitar Veículo">
+        </form>
+        <a href="index.html">Voltar ao Início</a>
+    </main>
+</body>
+</html>
