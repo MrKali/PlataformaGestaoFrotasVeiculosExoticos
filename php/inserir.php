@@ -21,6 +21,15 @@
     </style>
 </head>
 <body>
+<?php include 'menu.php'; ?>
+    <?php
+    session_start();
+    // Verificar se o usuário está autenticado
+    if (!isset($_SESSION['username'])) {
+        header("Location: index.html");
+        exit();
+    }
+    ?>
     <header>
         <h1>Inserir Veículo</h1>
     </header>
@@ -32,9 +41,9 @@
                     Selecione a Marca
                 </button>
                 <div class="dropdown-menu" aria-labelledby="marcaDropdown">
-                    <a class="dropdown-item" href="#" data-value="Toyota"><img src="img/toyota.png" alt="Toyota"> Toyota</a>
-                    <a class="dropdown-item" href="#" data-value="Honda"><img src="img/honda.png" alt="Honda"> Honda</a>
-                    <a class="dropdown-item" href="#" data-value="Ford"><img src="img/ford.png" alt="Ford"> Ford</a>
+                    <a class="dropdown-item" href="#" data-value="Acura"><img src="img/acura-removebg-preview.png" alt="Acura"> Acura</a>
+                    <a class="dropdown-item" href="#" data-value="Aston Martin"><img src="img/Aston-Martin-removebg-preview.png" alt="Aston Martin"> Aston Martin</a>
+                    <a class="dropdown-item" href="#" data-value="Bentley"><img src="img/bentley-removebg-preview.png" alt="Bentley"> Bentley</a>
                     <!-- Adicione mais marcas conforme necessário -->
                 </div>
             </div>
@@ -119,7 +128,7 @@
             });
 
             $('#modalInsertNewButton').on('click', function() {
-                window.location.href = 'inserir.html';
+                window.location.href = 'inserir.php';
             });
         });
     </script>

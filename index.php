@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-PT">
 <head>
@@ -37,13 +40,15 @@
     </header>
     <nav>
         <ul>
-            <li><a href="autenticar.html">Login</a></li>
-            <li><a href="inserir.html">Inserir Veículo</a></li>
-            <li><a href="remover.html">Remover Veículo</a></li>
-            <li><a href="atualizar.html">Atualizar Veículo</a></li>
+            <?php if (isset($_SESSION['username'])): ?>
+                <li><a href="logout.php">Logout</a></li>
+                <li><a href="php/inserir.php">Inserir Veículo</a></li>
+            <?php else: ?>
+                <li><a href="autenticar.html">Login</a></li>
+            <?php endif; ?>
             <li><a href="requisitar.html">Requisitar Veículo</a></li>
-            <li><a href="veiculos.html">Veículos Disponíveis</a></li>
-            <li><a href="itinerarios.html">Itinerários Disponíveis</a></li>
+            <li><a href="php/veiculos.php">Veículos Disponíveis</a></li>
+            <li><a href="php/itinerarios.php">Itinerários Disponíveis</a></li>
         </ul>
     </nav>
 
@@ -66,7 +71,6 @@
                 <img src="img/ferrarilaferrari-removebg-preview.png" alt="vic5">
                 <img src="img/cadillac-removebg-preview.png" alt="vic6">
                 <img src="img/infiniti-removebg-preview.png" alt="vic7">
-
             </div>
             <div class="row">
                 <!-- Imagens da segunda linha -->
@@ -88,7 +92,7 @@
             </div>
         </div>
     </main>
-<br>
+    <br>
     <footer>
         <p>Trabalho realizado por Gonçalo, Andreza, Pedro - IG - Pós Laboral</p>
     </footer>
