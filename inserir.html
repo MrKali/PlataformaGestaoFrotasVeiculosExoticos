@@ -6,6 +6,19 @@
     <title>Inserção de Veículos</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .dropdown-item img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+        .dropdown-menu {
+            width: 100%;
+        }
+        .dropdown-toggle::after {
+            margin-left: 10px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -14,7 +27,18 @@
     <main>
         <form id="vehicleForm">
             <label for="marca">Marca:</label>
-            <input type="text" id="marca" name="marca" required><br>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="marcaDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Selecione a Marca
+                </button>
+                <div class="dropdown-menu" aria-labelledby="marcaDropdown">
+                    <a class="dropdown-item" href="#" data-value="Toyota"><img src="img/toyota.png" alt="Toyota"> Toyota</a>
+                    <a class="dropdown-item" href="#" data-value="Honda"><img src="img/honda.png" alt="Honda"> Honda</a>
+                    <a class="dropdown-item" href="#" data-value="Ford"><img src="img/ford.png" alt="Ford"> Ford</a>
+                    <!-- Adicione mais marcas conforme necessário -->
+                </div>
+            </div>
+            <input type="hidden" id="marca" name="marca" required>
 
             <label for="modelo">Modelo:</label>
             <input type="text" id="modelo" name="modelo" required><br>
@@ -58,6 +82,15 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script>
         $(document).ready(function() {
+            // Dropdown item click handler
+            $('.dropdown-item').on('click', function(e) {
+                e.preventDefault();
+                var selectedBrand = $(this).data('value');
+                var brandName = $(this).text().trim();
+                $('#marcaDropdown').text(brandName);
+                $('#marca').val(selectedBrand);
+            });
+
             $('#vehicleForm').on('submit', function(event) {
                 event.preventDefault(); // Prevenir o envio padrão do formulário
 
