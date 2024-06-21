@@ -56,39 +56,39 @@ session_start();
         <div class="image-container">
             <div class="row">
                 <!-- Imagens da primeira linha -->
-                <img src="img/acura-removebg-preview.png" alt="vic1">
-                <img src="img/Aston-Martin-removebg-preview.png" alt="vic2">
-                <img src="img/bentley-removebg-preview.png" alt="vic3">
-                <img src="img/bugatti-removebg-preview.png" alt="vic4">
-                <img src="img/ferrarilaferrari-removebg-preview.png" alt="vic5">
-                <img src="img/cadillac-removebg-preview.png" alt="vic6">
-                <img src="img/infiniti-removebg-preview.png" alt="vic7">
+                <img src="img/marcas/acura.png" alt="vic1">
+                <img src="img/marcas/astonMartin.png" alt="vic2">
+                <img src="img/marcas/bentley.png" alt="vic3">
+                <img src="img/marcas/bugatti.png" alt="vic4">
+                <img src="img/marcas/ferrari.png" alt="vic5">
+                <img src="img/marcas/cadillac.png" alt="vic6">
+                <img src="img/marcas/infinit.png" alt="vic7">
                 <!-- Repetindo imagens para criar o loop -->
-                <img src="img/acura-removebg-preview.png" alt="vic1">
-                <img src="img/Aston-Martin-removebg-preview.png" alt="vic2">
-                <img src="img/bentley-removebg-preview.png" alt="vic3">
-                <img src="img/bugatti-removebg-preview.png" alt="vic4">
-                <img src="img/ferrarilaferrari-removebg-preview.png" alt="vic5">
-                <img src="img/cadillac-removebg-preview.png" alt="vic6">
-                <img src="img/infiniti-removebg-preview.png" alt="vic7">
-            </div>
+                <img src="img/marcas/acura.png" alt="vic1">
+                <img src="img/marcas/astonMartin.png" alt="vic2">
+                <img src="img/marcas/bentley.png" alt="vic3">
+                <img src="img/marcas/bugatti.png" alt="vic4">
+                <img src="img/marcas/ferrari.png" alt="vic5">
+                <img src="img/marcas/cadillac.png" alt="vic6">
+                <img src="img/marcas/infinit.png" alt="vic7">
+            </div><br><br><br>
             <div class="row">
                 <!-- Imagens da segunda linha -->
-                <img src="img//land-rover-removebg-preview.png" alt="vic8">
-                <img src="img/maserati-removebg-preview.png" alt="vic9">
-                <img src="img/mercedes-benz-removebg-preview.png" alt="vic10">
-                <img src="img/porsche-removebg-preview.png" alt="vic11">
-                <img src="img/rolls-royce-logo-removebg-preview.png" alt="vic12">
-                <img src="img/jaguar-removebg-preview.png" alt="vic13">
-                <img src="img/lamborghini-removebg-preview.png" alt="vic14">
+                <img src="img/marcas/landRover.png" alt="vic8">
+                <img src="img/marcas/maserati.png" alt="vic9">
+                <img src="img/marcas/mercedesBenz.png" alt="vic10">
+                <img src="img/marcas/porsche.png" alt="vic11">
+                <img src="img/marcas/rollsRoyce.png" alt="vic12">
+                <img src="img/marcas/jaguar.png" alt="vic13">
+                <img src="img/marcas/lamborghini.png" alt="vic14">
                 <!-- Repetindo imagens para criar o loop -->
-                <img src="img//land-rover-removebg-preview.png" alt="vic8">
-                <img src="img/maserati-removebg-preview.png" alt="vic9">
-                <img src="img/mercedes-benz-removebg-preview.png" alt="vic10">
-                <img src="img/porsche-removebg-preview.png" alt="vic11">
-                <img src="img/rolls-royce-logo-removebg-preview.png" alt="vic12">
-                <img src="img/jaguar-removebg-preview.png" alt="vic13">
-                <img src="img/lamborghini-removebg-preview.png" alt="vic14">
+                <img src="img/marcas/landRover.png" alt="vic8">
+                <img src="img/marcas/maserati.png" alt="vic9">
+                <img src="img/marcas/mercedesBenz.png" alt="vic10">
+                <img src="img/marcas/porsche.png" alt="vic11">
+                <img src="img/marcas/rollsRoyce.png" alt="vic12">
+                <img src="img/marcas/jaguar.png" alt="vic13">
+                <img src="img/marcas/lamborghini.png" alt="vic14">
             </div>
         </div>
     </main>
