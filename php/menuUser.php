@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
+if (!isset($_SESSION['username']) || $_SESSION['role'] != 'user') {
     header("Location: ../autenticar.html");
     exit();
 }
@@ -11,7 +11,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Admin</title>
+    <title>Menu User</title>
     <link rel="stylesheet" href="../styles.css">
     <style>
         body {
@@ -66,9 +66,6 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
         nav ul li a:hover {
             background-color: #111;
         }
-        main {
-            padding: 20px;
-        }
     </style>
 </head>
 <body>
@@ -81,10 +78,9 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
     </header>
     <nav>
         <ul>
-            <li><a href="painelAdmin.php">Home</a></li>
-            <li><a href="gerirEstadoVeiculos.php">Gerir Estado dos Veículos</a></li>
-            <li><a href="gerirRequisicoesAdmin.php">Gerir Requisições</a></li>
-            <li><a href="adicionarVeiculo.php">Inserir Veículo</a></li>
+            <li><a href="painelUtilizador.php">Home</a></li>
+            <li><a href="requisitarVeiculo.php">Requisitar Veículo</a></li>
+            <li><a href="estadoRequisicoes.php">Estado das Requisições</a></li>
         </ul>
     </nav>
 </body>
