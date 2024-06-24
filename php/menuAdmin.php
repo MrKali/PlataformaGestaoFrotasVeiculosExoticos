@@ -1,5 +1,8 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
     header("Location: ../autenticar.html");
     exit();
@@ -23,14 +26,20 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
         header {
             background-color: #333;
             color: #fff;
-            padding: 10px 0;
+            padding: 10px 20px; /* Ajuste para adicionar margens laterais */
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
+        }
+        .header-left,
+        .header-right {
+            display: flex;
+            align-items: center;
         }
         header h1 {
             margin: 0;
+            flex-grow: 1;
+            text-align: center;
         }
         header .user-info {
             display: flex;
@@ -45,47 +54,32 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
             background-color: #f44336;
             padding: 5px 10px;
             border-radius: 5px;
+            margin-left: 10px; /* Margem esquerda para afastar do texto */
         }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            background-color: #444;
-            overflow: hidden;
-        }
-        nav ul li {
-            float: left;
-        }
-        nav ul li a {
-            display: block;
+        .back-button {
+            background-color: #007bff;
             color: #fff;
-            text-align: center;
-            padding: 14px 20px;
+            padding: 5px 10px;
+            border-radius: 5px;
             text-decoration: none;
-        }
-        nav ul li a:hover {
-            background-color: #111;
-        }
-        main {
-            padding: 20px;
+            margin-right: 10px; /* Margem direita para afastar da borda */
         }
     </style>
 </head>
 <body>
     <header>
+        <div class="header-left">
+            <?php if (basename($_SERVER['PHP_SELF']) != 'painelAdmin.php'): ?>
+                <a href="painelAdmin.php" class="back-button">Voltar</a>
+            <?php endif; ?>
+        </div>
         <h1>Gestão de Frotas</h1>
-        <div class="user-info">
-            <span>Bem-vindo, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
-            <a href="logout.php">Logout</a>
+        <div class="header-right">
+            <div class="user-info">
+                <span>Bem-vindo, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
+                <a href="logout.php">Logout</a>
+            </div>
         </div>
     </header>
-    <nav>
-        <ul>
-            <li><a href="painelAdmin.php">Home</a></li>
-            <li><a href="gerirEstadoVeiculos.php">Gerir Estado dos Veículos</a></li>
-            <li><a href="gerirRequisicoesAdmin.php">Gerir Requisições</a></li>
-            <li><a href="adicionarVeiculo.php">Inserir Veículo</a></li>
-        </ul>
-    </nav>
 </body>
 </html>

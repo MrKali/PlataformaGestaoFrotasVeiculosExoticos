@@ -41,12 +41,12 @@ session_start();
     <nav>
         <ul>
             <?php if (isset($_SESSION['username'])): ?>
-                <li><a href="logout.php">Logout</a></li>
+                <li><a href="php/logout.php">Logout</a></li>
                 <li><a href="php/inserir.php">Inserir Veículo</a></li>
             <?php else: ?>
                 <li><a href="autenticar.html">Login</a></li>
             <?php endif; ?>
-            <li><a href="requisitar.html">Requisitar Veículo</a></li>
+            <li><a href="php/requisitarVeiculo.php">Requisitar Veículo</a></li>
             <li><a href="php/veiculos.php">Veículos Disponíveis</a></li>
             <li><a href="php/itinerarios.php">Itinerários Disponíveis</a></li>
         </ul>

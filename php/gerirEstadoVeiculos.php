@@ -3,7 +3,7 @@ include 'menuAdmin.php';
 include 'conexaoDb.php';
 
 // Obter a lista de veículos
-$query_veiculos = "SELECT veiculos.id, marcas.marca, modelos.modelo, veiculos.ano, veiculos.matricula, veiculos.estado 
+$query_veiculos = "SELECT veiculos.id, marcas.marca, modelos.modelo, veiculos.ano, veiculos.matricula, veiculos.estado, marcas.diretorio_logo 
                    FROM veiculos 
                    JOIN marcas ON veiculos.marca = marcas.id 
                    JOIN modelos ON veiculos.modelo = modelos.id";
@@ -48,6 +48,10 @@ $result_veiculos = mysqli_query($liga, $query_veiculos);
             height: 20px;
             cursor: pointer;
         }
+        .logo {
+            width: 40px;
+            height: 40px;
+        }
     </style>
     <script>
         function confirmarAtualizacao(id) {
@@ -55,6 +59,12 @@ $result_veiculos = mysqli_query($liga, $query_veiculos);
             let mensagem = `Tem certeza que deseja atualizar o estado do veículo para ${estado}?`;
             if (confirm(mensagem)) {
                 window.location.href = `atualizarEstadoVeiculo.php?id=${id}&estado=${estado}`;
+            }
+        }
+
+        function confirmarEliminacao(id) {
+            if (confirm("Tem certeza que deseja eliminar este veículo?")) {
+                window.location.href = 'eliminarVeiculo.php?id=' + id;
             }
         }
     </script>
@@ -65,17 +75,20 @@ $result_veiculos = mysqli_query($liga, $query_veiculos);
         <table>
             <thead>
                 <tr>
+                    <th></th>
                     <th>ID</th>
                     <th>Veículo</th>
                     <th>Ano</th>
                     <th>Matrícula</th>
                     <th>Estado Atual</th>
                     <th>Atualizar Estado</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
                 <?php while ($row = mysqli_fetch_assoc($result_veiculos)): ?>
                     <tr>
+                        <td><img src="<?php echo htmlspecialchars($row['diretorio_logo']); ?>" alt="Logo" class="logo"></td>
                         <td><?php echo htmlspecialchars($row['id']); ?></td>
                         <td><?php echo htmlspecialchars($row['marca'] . ' ' . $row['modelo']); ?></td>
                         <td><?php echo htmlspecialchars($row['ano']); ?></td>
@@ -88,6 +101,9 @@ $result_veiculos = mysqli_query($liga, $query_veiculos);
                                 <option value="manutencao" <?php echo $row['estado'] == 'manutencao' ? 'selected' : ''; ?>>Manutenção</option>
                             </select>
                             <button onclick="confirmarAtualizacao(<?php echo $row['id']; ?>)">Atualizar</button>
+                        </td>
+                        <td class="action-icons">
+                            <img src="../img/icons/delete-icon.png" alt="Eliminar" onclick="confirmarEliminacao(<?php echo $row['id']; ?>)">
                         </td>
                     </tr>
                 <?php endwhile; ?>

@@ -1,5 +1,14 @@
 <?php
+session_start();
 include 'conexaoDb.php';
+
+// Verificar se o usuário está logado e se é admin
+$isAdmin = false;
+if (isset($_SESSION['username'])) {
+    if ($_SESSION['role'] == 'admin') {
+        $isAdmin = true;
+    }
+}
 
 // Consultar todos os itinerários disponíveis na base de dados
 $query_itinerarios = "SELECT * FROM `itinerarios`";
@@ -19,7 +28,7 @@ while ($row = mysqli_fetch_assoc($result_itinerarios)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Itinerarios Disponiveis</title>
+    <title>Itinerários Disponíveis</title>
     <style>
         /* Reset básico */
         * {
@@ -53,7 +62,7 @@ while ($row = mysqli_fetch_assoc($result_itinerarios)) {
 
         /* Estilo do conteúdo principal */
         main {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 20px auto;
             padding: 20px;
             background-color: #fff;
@@ -90,21 +99,31 @@ while ($row = mysqli_fetch_assoc($result_itinerarios)) {
             text-decoration: underline;
         }
 
-        /* Estilo do iframe do mapa */
-        .map-container {
-            margin-bottom: 20px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        /* Estilo do container de itinerários */
+        .itinerarios-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
         }
 
-        .map-container iframe {
+        /* Estilo do cartão de itinerário */
+        .itinerario-card {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 10px;
+            flex: 1 1 calc(33.333% - 20px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .itinerario-card iframe {
             width: 100%;
-            height: 300px; /* Altura ajustável conforme necessário */
+            height: 200px;
             border: none;
         }
 
-        /* Estilo para a descrição do percurso */
         .descricao-percurso {
             padding: 10px;
             background-color: #f9f9f9;
@@ -123,23 +142,28 @@ while ($row = mysqli_fetch_assoc($result_itinerarios)) {
     </style>
 </head>
 <body>
+    <?php if ($isAdmin): ?>
+        <?php include 'menuAdmin.php'; ?>
+    <?php endif; ?>
     <header>
         <h1>Percursos Dentro de Portugal</h1>
     </header>
     <main>
-        <?php if (count($itinerarios) > 0): ?>
-            <?php foreach ($itinerarios as $itinerario): ?>
-                <div class="map-container">
-                    <iframe src="<?php echo htmlspecialchars($itinerario['mapa_url']); ?>" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                    <div class="descricao-percurso">
-                        <h3><?php echo htmlspecialchars($itinerario['titulo']); ?></h3>
-                        <p><?php echo htmlspecialchars($itinerario['descricao']); ?></p>
+        <div class="itinerarios-container">
+            <?php if (count($itinerarios) > 0): ?>
+                <?php foreach ($itinerarios as $itinerario): ?>
+                    <div class="itinerario-card">
+                        <iframe src="<?php echo htmlspecialchars($itinerario['mapa_url']); ?>" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        <div class="descricao-percurso">
+                            <h3><?php echo htmlspecialchars($itinerario['titulo']); ?></h3>
+                            <p><?php echo htmlspecialchars($itinerario['descricao']); ?></p>
+                        </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p>Não existem itinerários disponíveis neste momento.</p>
-        <?php endif; ?>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>Não existem itinerários disponíveis neste momento.</p>
+            <?php endif; ?>
+        </div>
     </main>
     <footer>
         <p>Trabalho realizado por Gonçalo, Andreza, Pedro</p>
