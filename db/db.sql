@@ -14,7 +14,21 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- Dumping data for table plataformagestaofrotasveiculosexoticos.itinerarios: ~9 rows (approximately)
+
+-- Dumping database structure for plataformagestaofrotasveiculosexoticos
+CREATE DATABASE IF NOT EXISTS `plataformagestaofrotasveiculosexoticos` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `plataformagestaofrotasveiculosexoticos`;
+
+-- Dumping structure for table plataformagestaofrotasveiculosexoticos.itinerarios
+CREATE TABLE IF NOT EXISTS `itinerarios` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(255) NOT NULL,
+  `descricao` text NOT NULL,
+  `mapa_url` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dumping data for table plataformagestaofrotasveiculosexoticos.itinerarios: ~8 rows (approximately)
 REPLACE INTO `itinerarios` (`id`, `titulo`, `descricao`, `mapa_url`) VALUES
 	(1, 'TEsteeeeee', 'Percurso de Lisboa até Porto, mostrando a rota principal pela autoestrada A1.', 'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d250607.3272815986!2d-9.1614194825707!3d38.7575699400344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0xd1933329ca0a88f%3A0x400f1672b424c50!2sLisboa!3m2!1d38.716948!2d-9.139363!4m5!1s0xd246e1e3c2d6663%3A0xa00c7a997b0a2c0!2sPorto!3m2!1d41.1579438!2d-8.629105299999999!5e0!3m2!1spt-PT!2spt!4v1623992158492'),
 	(2, 'Faro para Évora', 'Percurso de Faro até Évora, mostrando a rota principal pela autoestrada A22 e A2.', 'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d250843.1106410025!2d-7.935046533409516!3d37.10256874355813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0xd19331d9c59f8c1%3A0x400f1672b424c60!2sFaro!3m2!1d37.0193556!2d-7.930440499999999!4m5!1s0xd1ab1ec9ac2a29b%3A0x7f7b3d6a739f9e6c!2s%C3%89vora!3m2!1d38.5714418!2d-7.9094523!5e0!3m2!1spt-PT!2spt!4v1623992415101'),
@@ -24,6 +38,14 @@ REPLACE INTO `itinerarios` (`id`, `titulo`, `descricao`, `mapa_url`) VALUES
 	(8, 'Viseu para Bragança', 'Percurso de Viseu até Bragança, mostrando a rota principal pela autoestrada A24 e A4.', 'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d129737.20168878014!2d-7.775066882727339!3d40.52221618165026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0xd1b0b88f4b6f931%3A0x18a730d68d98ea4e!2sViseu!3m2!1d40.6565865!2d-7.9121208!4m5!1s0xd1ad71e998a8097%3A0x8ebc146f5ce243c8!2sBragan%C3%A7a!3m2!1d41.8056516!2d-6.7570587!5e0!3m2!1spt-PT!2spt!4v1623993487838'),
 	(9, 'ISLA - Manicómio Lisboa', 'O caminho de todos os estudantes', 'https://maps.app.goo.gl/78ShVddaYB6MSKo77'),
 	(10, 'teste do teste 333', 'bacano', 'url marada');
+
+-- Dumping structure for table plataformagestaofrotasveiculosexoticos.marcas
+CREATE TABLE IF NOT EXISTS `marcas` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `marca` varchar(255) NOT NULL,
+  `diretorio_logo` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dumping data for table plataformagestaofrotasveiculosexoticos.marcas: ~14 rows (approximately)
 REPLACE INTO `marcas` (`id`, `marca`, `diretorio_logo`) VALUES
@@ -41,6 +63,17 @@ REPLACE INTO `marcas` (`id`, `marca`, `diretorio_logo`) VALUES
 	(12, 'Mercedes-Benz', '../img/marcas/mercedesBenz.png'),
 	(13, 'Porsche', '../img/marcas/porsche.png'),
 	(14, 'Rolls-Royce', '../img/marcas/rollsRoyce.png');
+
+-- Dumping structure for table plataformagestaofrotasveiculosexoticos.modelos
+CREATE TABLE IF NOT EXISTS `modelos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `id_marca` int NOT NULL,
+  `modelo` varchar(255) NOT NULL,
+  `especificacoes` varchar(5000) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_marca` (`id_marca`),
+  CONSTRAINT `modelos_ibfk_1` FOREIGN KEY (`id_marca`) REFERENCES `marcas` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dumping data for table plataformagestaofrotasveiculosexoticos.modelos: ~42 rows (approximately)
 REPLACE INTO `modelos` (`id`, `id_marca`, `modelo`, `especificacoes`) VALUES
@@ -87,7 +120,34 @@ REPLACE INTO `modelos` (`id`, `id_marca`, `modelo`, `especificacoes`) VALUES
 	(41, 14, 'Ghost', NULL),
 	(42, 14, 'Wraith', NULL);
 
+-- Dumping structure for table plataformagestaofrotasveiculosexoticos.pontos_interesse
+CREATE TABLE IF NOT EXISTS `pontos_interesse` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `itinerario_id` int NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `descricao` text,
+  PRIMARY KEY (`id`),
+  KEY `itinerario_id` (`itinerario_id`),
+  CONSTRAINT `pontos_interesse_ibfk_1` FOREIGN KEY (`itinerario_id`) REFERENCES `itinerarios` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 -- Dumping data for table plataformagestaofrotasveiculosexoticos.pontos_interesse: ~0 rows (approximately)
+
+-- Dumping structure for table plataformagestaofrotasveiculosexoticos.requisicoes
+CREATE TABLE IF NOT EXISTS `requisicoes` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `veiculo_id` int NOT NULL,
+  `itinerario_id` int NOT NULL,
+  `data_requisicao` date NOT NULL,
+  `estado` enum('pendente','aprovado','rejeitado') DEFAULT 'pendente',
+  `data_devolucao` date DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `veiculo_id` (`veiculo_id`),
+  KEY `itinerario_id` (`itinerario_id`),
+  CONSTRAINT `requisicoes_ibfk_1` FOREIGN KEY (`veiculo_id`) REFERENCES `veiculos` (`id`),
+  CONSTRAINT `requisicoes_ibfk_2` FOREIGN KEY (`itinerario_id`) REFERENCES `itinerarios` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dumping data for table plataformagestaofrotasveiculosexoticos.requisicoes: ~8 rows (approximately)
 REPLACE INTO `requisicoes` (`id`, `username`, `veiculo_id`, `itinerario_id`, `data_requisicao`, `estado`, `data_devolucao`) VALUES
@@ -100,11 +160,34 @@ REPLACE INTO `requisicoes` (`id`, `username`, `veiculo_id`, `itinerario_id`, `da
 	(9, 'goncalo', 6, 6, '2024-06-26', 'aprovado', NULL),
 	(10, 'pedro', 6, 2, '2024-06-26', 'rejeitado', NULL);
 
+-- Dumping structure for table plataformagestaofrotasveiculosexoticos.utilizadores
+CREATE TABLE IF NOT EXISTS `utilizadores` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` enum('admin','user') NOT NULL,
+  `email_confirmado` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 -- Dumping data for table plataformagestaofrotasveiculosexoticos.utilizadores: ~3 rows (approximately)
 REPLACE INTO `utilizadores` (`id`, `nome`, `email`, `password`, `role`, `email_confirmado`) VALUES
 	(1, 'admin', 'admin@admin.com', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'admin', 0),
 	(5, 'pedro', 'pedro.varela955@gmail.com', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'user', 0),
 	(6, 'goncalo', 'goncalo@gmail.com', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'user', 0);
+
+-- Dumping structure for table plataformagestaofrotasveiculosexoticos.veiculos
+CREATE TABLE IF NOT EXISTS `veiculos` (
+  `marca` varchar(50) NOT NULL DEFAULT '0',
+  `modelo` varchar(50) NOT NULL DEFAULT '0',
+  `ano` int NOT NULL,
+  `matricula` varchar(50) NOT NULL DEFAULT '0',
+  `id` int NOT NULL AUTO_INCREMENT,
+  `estado` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dumping data for table plataformagestaofrotasveiculosexoticos.veiculos: ~6 rows (approximately)
 REPLACE INTO `veiculos` (`marca`, `modelo`, `ano`, `matricula`, `id`, `estado`) VALUES
