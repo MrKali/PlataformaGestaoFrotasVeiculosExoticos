@@ -120,7 +120,7 @@ function getModelos($liga, $id_marca) {
                 <label for="matricula">Matrícula:</label>
                 <input type="text" id="matricula" name="matricula" required>
 
-                <input type="hidden" name="estado" value="">
+                <input type="hidden" name="estado" value="disponivel">
 
                 <button type="submit">Adicionar Veículo</button>
             </form>
