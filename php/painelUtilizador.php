@@ -90,7 +90,7 @@
             <p><a href="#">Sobre Nós</a></p>
             <p><a href="#">Serviços</a></p>
             <p><a href="#">Contato</a></p>
-            <p><a href="#">Política de Privacidade</a></p>
+            <p><a href="../Projeto-ManualdeApoio-Goncalo_Pedro_Andreza.pdf">Manual de Apoio</a></p>
         </div>
         <div class="social-icons">
     </div>
