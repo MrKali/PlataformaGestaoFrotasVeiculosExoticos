@@ -1,6 +1,14 @@
 <?php
 include 'conexaoDb.php';
 
+// Iniciar a sessão para gerenciar o idioma
+session_start();
+$lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'pt';
+$translations = include "../translations/{$lang}.php";
+
+// Incluir a função de tradução
+include 'functions.php';
+
 // Obter as marcas da base de dados
 $query_marcas = "SELECT * FROM `marcas`";
 $result_marcas = mysqli_query($liga, $query_marcas);
@@ -17,11 +25,11 @@ function getModelos($liga, $id_marca) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="<?php echo $lang; ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Veículo</title>
+    <title><?php echo translate('add_vehicle', $translations, 'Add Vehicle'); ?></title>
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
@@ -88,7 +96,7 @@ function getModelos($liga, $id_marca) {
         function validarFormulario(event) {
             const matricula = document.getElementById('matricula').value;
             if (!validarMatricula(matricula)) {
-                alert('Matrícula inválida. Deve estar no formato AA-00-00, 00-00-AA, 00-AA-00 ou AA-00-AA.');
+                alert('<?php echo translate('invalid_license_plate', $translations, 'Invalid license plate. Must be in the format AA-00-00, 00-00-AA, 00-AA-00 or AA-00-AA.'); ?>');
                 event.preventDefault();
             }
         }
@@ -97,11 +105,11 @@ function getModelos($liga, $id_marca) {
 <body>
     <?php include 'menuAdmin.php'; ?>
         <div class="form-container">
-            <h2>Adicionar Novo Veículo</h2>
+            <h2><?php echo translate('add_new_vehicle', $translations, 'Add New Vehicle'); ?></h2>
             <form action="processarAdicionarVeiculo.php" method="post" onsubmit="validarFormulario(event)">
-                <label for="marca">Marca:</label>
+                <label for="marca"><?php echo translate('brand', $translations, 'Brand'); ?>:</label>
                 <select id="marca" name="marca" onchange="getModelos(this.value)" required>
-                    <option value="">Selecione uma marca</option>
+                    <option value=""><?php echo translate('select_brand', $translations, 'Select a brand'); ?></option>
                     <?php while ($row = mysqli_fetch_assoc($result_marcas)): ?>
                         <option value="<?php echo htmlspecialchars($row['id']); ?>">
                             <?php echo htmlspecialchars($row['marca']); ?>
@@ -109,20 +117,20 @@ function getModelos($liga, $id_marca) {
                     <?php endwhile; ?>
                 </select>
 
-                <label for="modelo">Modelo:</label>
+                <label for="modelo"><?php echo translate('model', $translations, 'Model'); ?>:</label>
                 <select id="modelo" name="modelo" required>
-                    <option value="">Selecione um modelo</option>
+                    <option value=""><?php echo translate('select_model', $translations, 'Select a model'); ?></option>
                 </select>
 
-                <label for="ano">Ano:</label>
+                <label for="ano"><?php echo translate('year', $translations, 'Year'); ?>:</label>
                 <input type="number" id="ano" name="ano" min="1886" max="<?php echo date('Y'); ?>" required>
 
-                <label for="matricula">Matrícula:</label>
+                <label for="matricula"><?php echo translate('license_plate', $translations, 'License Plate'); ?>:</label>
                 <input type="text" id="matricula" name="matricula" required>
 
                 <input type="hidden" name="estado" value="disponivel">
 
-                <button type="submit">Adicionar Veículo</button>
+                <button type="submit"><?php echo translate('add', $translations, 'Add'); ?></button>
             </form>
         </div>
     </main>

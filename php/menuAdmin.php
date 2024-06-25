@@ -7,14 +7,25 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
     header("Location: ../autenticar.html");
     exit();
 }
+
+// Incluir a função de tradução
+include 'functions.php';
+
+// Definir o idioma
+if (isset($_POST['lang'])) {
+    $_SESSION['lang'] = $_POST['lang'];
+}
+
+$lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'pt';
+$translations = include "../translations/{$lang}.php";
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="<?php echo $lang; ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Admin</title>
+    <title><?php echo translate('admin_menu', $translations, 'Admin Menu'); ?></title>
     <link rel="stylesheet" href="../styles.css">
     <style>
         body {
@@ -64,20 +75,33 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
             text-decoration: none;
             margin-right: 10px; /* Margem direita para afastar da borda */
         }
+        .language-select {
+            margin-left: 20px;
+            color: #fff;
+            background-color: #333;
+            border: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="header-left">
             <?php if (basename($_SERVER['PHP_SELF']) != 'painelAdmin.php'): ?>
-                <a href="painelAdmin.php" class="back-button">Voltar</a>
+                <a href="painelAdmin.php" class="back-button"><?php echo translate('back', $translations, 'Back'); ?></a>
             <?php endif; ?>
         </div>
-        <h1>Gestão de Frotas</h1>
+        <h1><?php echo translate('fleet_management', $translations, 'Fleet Management'); ?></h1>
         <div class="header-right">
+            <form method="post" action="">
+                <select name="lang" onchange="this.form.submit()" class="language-select">
+                    <option value="pt" <?php echo $lang == 'pt' ? 'selected' : ''; ?>>Português</option>
+                    <option value="en" <?php echo $lang == 'en' ? 'selected' : ''; ?>>English</option>
+                </select>
+            </form>
             <div class="user-info">
-                <span>Bem-vindo, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
-                <a href="logout.php">Logout</a>
+                <span><?php echo translate('welcome', $translations, 'Welcome'); ?>, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
+                <a href="logout.php"><?php echo translate('logout', $translations, 'Logout'); ?></a>
             </div>
         </div>
     </header>

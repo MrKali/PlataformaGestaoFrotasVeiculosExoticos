@@ -1,12 +1,21 @@
 <?php
 include 'conexaoDb.php';
+
+// Iniciar a sessão para gerenciar o idioma
+session_start();
+$lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'pt';
+$translations = include "../translations/{$lang}.php";
+
+function translate($key, $translations, $default = '') {
+    return isset($translations[$key]) ? $translations[$key] : $default;
+}
 ?>
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="<?php echo $lang; ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Itinerário</title>
+    <title><?php echo translate('add_itinerary', $translations, 'Add Itinerary'); ?></title>
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
@@ -50,18 +59,18 @@ include 'conexaoDb.php';
 <body>
     <?php include 'menuAdmin.php'; ?>
         <div class="form-container">
-            <h2>Adicionar Novo Itinerário</h2>
+            <h2><?php echo translate('add_new_itinerary', $translations, 'Add New Itinerary'); ?></h2>
             <form action="processarAdicionarItinerario.php" method="post">
-                <label for="titulo">Título:</label>
+                <label for="titulo"><?php echo translate('title', $translations, 'Title'); ?>:</label>
                 <input type="text" id="titulo" name="titulo" required>
 
-                <label for="descricao">Descrição:</label>
+                <label for="descricao"><?php echo translate('description', $translations, 'Description'); ?>:</label>
                 <textarea id="descricao" name="descricao" required></textarea>
 
-                <label for="mapa_url">URL do Mapa:</label>
+                <label for="mapa_url"><?php echo translate('map_url', $translations, 'Map URL'); ?>:</label>
                 <input type="text" id="mapa_url" name="mapa_url" required>
 
-                <button type="submit">Adicionar Itinerário</button>
+                <button type="submit"><?php echo translate('add_itinerary', $translations, 'Add Itinerary'); ?></button>
             </form>
         </div>
     </main>
