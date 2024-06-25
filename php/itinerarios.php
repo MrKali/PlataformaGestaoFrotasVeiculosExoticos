@@ -83,6 +83,54 @@ while ($row = mysqli_fetch_assoc($result_itinerarios)) {
     background-color: #004494;
     transform: scale(1);
 }
+.footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+        .footer .container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .footer .about,
+        .footer .contact,
+        .footer .links {
+            flex: 1;
+            min-width: 200px;
+            margin: 10px 0;
+        }
+        .footer h3 {
+            margin-bottom: 15px;
+        }
+        .footer p, .footer a {
+            margin: 0;
+            color: #ccc;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .footer .social-icons a {
+            margin: 0 5px;
+            color: white;
+            text-decoration: none;
+        }
+        .footer .social-icons a:hover {
+            color: #ddd;
+        }
+        .footer .social-icons i {
+            font-size: 18px;
+        }
+        .footer-bottom {
+            margin-top: 20px;
+            font-size: 12px;
+        }
 
         /* Estilo do conteúdo principal */
         main {
@@ -92,23 +140,6 @@ while ($row = mysqli_fetch_assoc($result_itinerarios)) {
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-        }
-
-        /* Estilo do rodapé */
-        footer {
-            text-align: center;
-            padding: 15px 0;
-            background-color: #343a40;
-            color: #fff;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        footer p {
-            margin: 0;
-            font-size: 1em;
         }
 
         /* Estilo para links */
@@ -189,9 +220,6 @@ while ($row = mysqli_fetch_assoc($result_itinerarios)) {
                 <p>Não existem itinerários disponíveis neste momento.</p>
             <?php endif; ?>
         </div>
-    </main><br>
-    <footer>
-        <p>Trabalho realizado por Gonçalo, Andreza, Pedro</p>
-    </footer>
+    </main>
 </body>
 </html>
