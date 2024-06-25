@@ -2,7 +2,7 @@
 session_start();
 include 'conexaoDb.php';
 
-// Verificar se o usuário está logado e se é admin
+// Verificar se o Utilizador está logado e se é admin
 $isAdmin = false;
 if (isset($_SESSION['username'])) {
     if ($_SESSION['role'] == 'admin') {

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Verificar se o usuário está autenticado
+// Verificar se o Utilizador está autenticado
 if (!isset($_SESSION['username'])) {
     header("Location: index.html");
     exit();

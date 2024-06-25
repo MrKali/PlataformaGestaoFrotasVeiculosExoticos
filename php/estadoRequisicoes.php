@@ -13,7 +13,7 @@ if (!isset($_SESSION['username'])) {
 
 $username = $_SESSION['username'];
 
-// Obter as requisições do usuário
+// Obter as requisições do Utilizador
 $query_requisicoes = "SELECT requisicoes.id, marcas.marca, modelos.modelo, requisicoes.data_requisicao, requisicoes.data_devolucao, requisicoes.estado 
                       FROM requisicoes 
                       JOIN veiculos ON requisicoes.veiculo_id = veiculos.id 
