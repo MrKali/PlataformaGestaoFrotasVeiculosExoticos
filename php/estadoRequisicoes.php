@@ -2,7 +2,10 @@
 include 'menuUser.php';
 include 'conexaoDb.php';
 
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 if (!isset($_SESSION['username'])) {
     header("Location: ../autenticar.html");
     exit();
@@ -79,11 +82,11 @@ $result_requisicoes = mysqli_stmt_get_result($stmt);
             <tbody>
                 <?php while ($row = mysqli_fetch_assoc($result_requisicoes)): ?>
                     <tr>
-                        <td><?php echo htmlspecialchars($row['id']); ?></td>
-                        <td><?php echo htmlspecialchars($row['marca'] . ' ' . $row['modelo']); ?></td>
-                        <td><?php echo htmlspecialchars($row['data_requisicao']); ?></td>
-                        <td><?php echo htmlspecialchars($row['data_devolucao']); ?></td>
-                        <td><?php echo htmlspecialchars($row['estado']); ?></td>
+                        <td><?php echo htmlspecialchars($row['id'] ?? '', ENT_QUOTES, 'UTF-8'); ?></td>
+                        <td><?php echo htmlspecialchars(($row['marca'] ?? '') . ' ' . ($row['modelo'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></td>
+                        <td><?php echo htmlspecialchars($row['data_requisicao'] ?? '', ENT_QUOTES, 'UTF-8'); ?></td>
+                        <td><?php echo htmlspecialchars($row['data_devolucao'] ?? '', ENT_QUOTES, 'UTF-8'); ?></td>
+                        <td><?php echo htmlspecialchars($row['estado'] ?? '', ENT_QUOTES, 'UTF-8'); ?></td>
                     </tr>
                 <?php endwhile; ?>
             </tbody>
