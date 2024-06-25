@@ -37,7 +37,7 @@ $translations = include "../translations/{$lang}.php";
         header {
             background-color: #333;
             color: #fff;
-            padding: 10px 20px; /* Ajuste para adicionar margens laterais */
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -65,7 +65,7 @@ $translations = include "../translations/{$lang}.php";
             background-color: #f44336;
             padding: 5px 10px;
             border-radius: 5px;
-            margin-left: 10px; /* Margem esquerda para afastar do texto */
+            margin-left: 10px;
         }
         .back-button {
             background-color: #007bff;
@@ -73,10 +73,11 @@ $translations = include "../translations/{$lang}.php";
             padding: 5px 10px;
             border-radius: 5px;
             text-decoration: none;
-            margin-right: 10px; /* Margem direita para afastar da borda */
+            margin-right: 10px;
         }
         .language-select {
             margin-left: 20px;
+            margin-right: 60px; /* Três vezes maior */
             color: #fff;
             background-color: #333;
             border: none;

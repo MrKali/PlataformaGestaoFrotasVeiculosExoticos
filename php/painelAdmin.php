@@ -1,10 +1,21 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
+// Incluir a função de tradução
+include 'functions.php';
+
+// Definir o idioma
+$lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'pt';
+$translations = include "../translations/{$lang}.php";
+?>
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="<?php echo $lang; ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel do Administrador</title>
+    <title><?php echo translate('admin_panel', $translations, 'Painel do Administrador'); ?></title>
     <link rel="stylesheet" href="../styles.css">
     <style>
         body {
@@ -45,19 +56,19 @@
     <main>
         <div class="container">
             <div class="card">
-                <a href="gerirEstadoVeiculos.php">Gerir Estado dos Veículos</a>
+                <a href="gerirEstadoVeiculos.php"><?php echo translate('manage_vehicle_status', $translations, 'Gerir Estado dos Veículos'); ?></a>
             </div>
             <div class="card">
-                <a href="gerirRequisicoesAdmin.php">Gerir Requisições</a>
+                <a href="gerirRequisicoesAdmin.php"><?php echo translate('manage_requests', $translations, 'Gerir Requisições'); ?></a>
             </div>
             <div class="card">
-                <a href="adicionarVeiculo.php">Inserir Veículo</a>
+                <a href="adicionarVeiculo.php"><?php echo translate('add_vehicle', $translations, 'Inserir Veículo'); ?></a>
             </div>  
             <div class="card">
-                <a href="adicionarItinerario.php">Inserir Itinerário</a>
+                <a href="adicionarItinerario.php"><?php echo translate('add_itinerary', $translations, 'Inserir Itinerário'); ?></a>
             </div>
             <div class="card">
-                <a href="verHistoricoRequisicoes.php">Ver Histórico de Requisições</a>
+                <a href="verHistoricoRequisicoes.php"><?php echo translate('view_request_history', $translations, 'Ver Histórico de Requisições'); ?></a>
             </div>
         </div>
     </main>
