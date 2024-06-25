@@ -81,6 +81,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] != 'user') {
             <li><a href="painelUtilizador.php">Home</a></li>
             <li><a href="requisitarVeiculo.php">Requisitar Veículo</a></li>
             <li><a href="estadoRequisicoes.php">Estado das Requisições</a></li>
+            <li><a href="itinerarios.php">Itinerários Disponíveis</a></li>
         </ul>
     </nav>
 </body>

@@ -54,6 +54,29 @@
             text-align: center;
         }
 
+         /* Estilo do botão personalizado */
+
+.custom-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.custom-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.custom-button:active {
+    background-color: #004494;
+    transform: scale(1);
+}
         form input[type="submit"]:hover,
         .create-account-button:hover {
             background-color: #555;
@@ -66,16 +89,18 @@
 
         .create-account-container a {
             text-decoration: none;
-            color: #333;
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Gestão de Frotas</h1>
-    </header>
-    
+        
+    </header><br>
+    <button onclick="window.history.back();" class="custom-button">Voltar</button>
+
     <main>
+        
         <!-- Formulário de Login -->
         <div id="loginForm">
             <h2>Login na Plataforma de Gestão de Frotas</h2>

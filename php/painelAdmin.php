@@ -1,6 +1,3 @@
-<?php
-include 'menuAdmin.php';
-?>
 
 <!DOCTYPE html>
 <html lang="pt-PT">
@@ -44,6 +41,7 @@ include 'menuAdmin.php';
     </style>
 </head>
 <body>
+    <?php include 'menuAdmin.php'; ?>
     <main>
         <div class="container">
             <div class="card">
@@ -57,9 +55,6 @@ include 'menuAdmin.php';
             </div>  
             <div class="card">
                 <a href="adicionarItinerario.php">Inserir Itinerário</a>
-            </div>
-            <div class="card">
-                <a href="itinerarios.php">Ver Itinerários</a>
             </div>
             <div class="card">
                 <a href="verHistoricoRequisicoes.php">Ver Histórico de Requisições</a>

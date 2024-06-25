@@ -42,6 +42,30 @@ while ($row = mysqli_fetch_assoc($result_veiculos)) {
             padding: 20px;
         }
 
+        /* Estilo do botão personalizado */
+
+.custom-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.custom-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.custom-button:active {
+    background-color: #004494;
+    transform: scale(1);
+}
+
         /* Estilo do cabeçalho */
         header {
             background: linear-gradient(135deg, #000000, #2b2b2b, #333, #343a40, #495057);
@@ -125,7 +149,9 @@ while ($row = mysqli_fetch_assoc($result_veiculos)) {
     <header>
         <h1>Portfólio de Marcas e Carros</h1>
     </header>
+    <button onclick="window.history.back();" class="custom-button">Voltar</button>
     <main>
+        
         <?php if (count($veiculos) > 0): ?>
             <?php 
             $marcas = [];
@@ -159,8 +185,5 @@ while ($row = mysqli_fetch_assoc($result_veiculos)) {
         <?php endif; ?>
     </main>
     <br>
-    <footer>
-        <p>Trabalho realizado por Gonçalo, Andreza, Pedro - IG - Pós Laboral</p>
-    </footer>
 </body>
 </html>

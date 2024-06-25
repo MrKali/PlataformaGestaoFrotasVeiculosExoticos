@@ -48,17 +48,41 @@ while ($row = mysqli_fetch_assoc($result_itinerarios)) {
 
         /* Estilo do cabeçalho */
         header {
-            background-color: #007bff;
-            color: #fff;
-            padding: 20px 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #000000, #2b2b2b, #333, #343a40, #495057);
+            color: #BAB6AA;
+            padding: 15px 0;
             text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         header h1 {
             margin: 0;
             font-size: 2em;
         }
+        /* Estilo do botão personalizado */
+
+.custom-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.custom-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.custom-button:active {
+    background-color: #004494;
+    transform: scale(1);
+}
 
         /* Estilo do conteúdo principal */
         main {
@@ -149,6 +173,7 @@ while ($row = mysqli_fetch_assoc($result_itinerarios)) {
         <h1>Percursos Dentro de Portugal</h1>
     </header>
     <main>
+    <button onclick="window.history.back();" class="custom-button">Voltar</button>
         <div class="itinerarios-container">
             <?php if (count($itinerarios) > 0): ?>
                 <?php foreach ($itinerarios as $itinerario): ?>
@@ -164,7 +189,7 @@ while ($row = mysqli_fetch_assoc($result_itinerarios)) {
                 <p>Não existem itinerários disponíveis neste momento.</p>
             <?php endif; ?>
         </div>
-    </main>
+    </main><br>
     <footer>
         <p>Trabalho realizado por Gonçalo, Andreza, Pedro</p>
     </footer>

@@ -15,6 +15,29 @@ body {
     min-height: 100vh;
 }
 
+/* Estilo do botão personalizado */
+.custom-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.custom-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.custom-button:active {
+    background-color: #004494;
+    transform: scale(1);
+}
+
 /* Estilo do cabeçalho */
 header {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

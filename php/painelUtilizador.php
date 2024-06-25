@@ -21,8 +21,7 @@
 </head>
 <body>
     <main>
-        <h2>Bem-vindo ao painel do utilizador!</h2>
-        <p>Aqui você pode requisitar veículos, visualizar os veículos disponíveis e ver os itinerários disponíveis.</p>
+        <h2>Bem-vindo ao painel do utilizador! Aqui você pode requisitar veículos, visualizar os veículos disponíveis e ver os itinerários disponíveis.</h2>
     </main>
 </body>
 </html>
