@@ -87,7 +87,7 @@
         </div>
         <div class="links">
             <h3>Links Úteis</h3>
-            <p><a href="#">Sobre Nós</a></p>
+            <p><a href="sobrenos.html">Sobre Nós</a></p>
             <p><a href="#">Serviços</a></p>
             <p><a href="#">Contato</a></p>
             <p><a href="../Projeto-ManualdeApoio-Goncalo_Pedro_Andreza.pdf">Manual de Apoio</a></p>

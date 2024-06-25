@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundadores do Projeto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+        .founder {
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            width: 150px;
+        }
+        .founder h2 {
+            margin: 10px 0;
+            font-size: 20px;
+        }
+        .founder p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        .emoji {
+            font-size: 50px;
+        }
+        /* Estilo do botão personalizado */
+        .custom-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .custom-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        .custom-button:active {
+            background-color: #004494;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <button onclick="window.history.back();" class="custom-button">Voltar</button>
+
+    <div class="container">
+        <div class="founder">
+            <div class="emoji">👨</div>
+            <h2>Gonçalo Dias</h2>
+            <p>ID: 22206831</p>
+            <p>Front-End Dev</p>
+        </div>
+        <div class="founder">
+            <div class="emoji">👩</div>
+            <h2>Andreza Helen</h2>
+            <p>ID: 22208311</p>
+            <p>Web Designer and Business Consultant</p>
+        </div>
+        <div class="founder">
+            <div class="emoji">👨</div>
+            <h2>Pedro Varela</h2>
+            <p>ID: 22200848</p>
+            <p>Back-End Dev</p>
+        </div>
+    </div>
+</body>
+</html>
