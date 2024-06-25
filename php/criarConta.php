@@ -28,32 +28,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         mysqli_stmt_bind_param($stmt, 'ssss', $nome, $email, $passwordHash, $role);
 
         if (mysqli_stmt_execute($stmt)) {
-            // Enviar email de confirmação
+            // Enviar email de boas-vindas
             $mail = new PHPMailer(true);
 
             try {
                 // Configurações do servidor de email
                 $mail->isSMTP();
-                $mail->Host = 'smtp-relay.brevo.com'; // Servidor SMTP do Sendinblue
+                $mail->Host = 'smtp.gmail.com';  // Servidor SMTP do Gmail
                 $mail->SMTPAuth = true;
-                $mail->Username = '77102d002@smtp-brevo.com'; // Seu nome de usuário SMTP Sendinblue
-                $mail->Password = '9z5MZPFgfhtIJQXx'; // Sua senha SMTP Sendinblue
+                $mail->Username = 'gestaofrotaig@gmail.com';  // Seu email Gmail
+                $mail->Password = 'zrlj knpv pzju hjcw';  // Senha de app gerada
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
 
                 // Destinatários
-                $mail->setFrom('seuemail@seusite.com', 'Gestão de Frotas');
+                $mail->setFrom('gestaofrotaig@gmail.com', 'Gestao de Frotas');
                 $mail->addAddress($email, $nome);
 
                 // Conteúdo do email
                 $mail->isHTML(true);
-                $mail->Subject = 'Confirmação de Email';
-                $mail->Body = 'Clique no link para confirmar seu email: <a href="http://seusite.com/confirmarEmail.php?email=' . urlencode($email) . '">Confirmar Email</a>';
+                $mail->Subject = 'Bem-vindo(a) a Gestao de Frotas';
+                $mail->Body = 'Ola ' . htmlspecialchars($nome) . ',<br><br>Bem-vindo(a) a plataforma de Gestao de Frotas! Estamos felizes por te-lo(a) conosco.<br><br>Atenciosamente,<br>Equipa de Gestao de Frotas';
 
                 $mail->send();
-                echo 'Email de confirmação enviado.';
+                
+                // Login automático
+                session_start();
+                $_SESSION['username'] = $nome;
+                $_SESSION['email'] = $email;
+                $_SESSION['role'] = $role;
+                
+                echo "<script>
+                        alert('Conta criada com sucesso! Um email de boas-vindas foi enviado.');
+                        window.location.href = 'painelUtilizador.php';
+                      </script>";
             } catch (Exception $e) {
-                echo "Erro ao enviar email de confirmação: {$mail->ErrorInfo}";
+                echo "Erro ao enviar email de boas-vindas: {$mail->ErrorInfo}";
             }
         } else {
             echo 'Erro ao criar conta: ' . mysqli_error($liga);
@@ -61,6 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-PT">
 <head>
